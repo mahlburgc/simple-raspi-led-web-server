@@ -18,23 +18,17 @@ enable_uart=1
 
 Also GPIO 10 must be used for dataline. See also [here](https://docs.circuitpython.org/projects/neopixel/en/latest/#setup-for-sudo-less-usage-on-raspberry-pi-boards).
 
+## API Reference
 
-## Web Server API
+**Base URL:** `http://<PI_IP_ADDRESS>:5000`
 
-Set LEDs to red:
-```
-curl -X POST -H "Content-Type: application/json" -d '{"r": 255, "g": 0, "b": 0}' http://<PI_IP_ADDRESS>:5000/led/set
-```
+| Endpoint | Function | Request Body (JSON) | Example (cURL) |
+| :--- | :--- | :--- | :--- |
+| `POST /led/set`| Sets a static color. Stops any running effect. | `{"r": 255, "g": 0, "b": 0}`| `curl -X POST -H "Content-Type: application/json" -d '{"r":0,"g":255,"b":0}' http://<PI_IP_ADDRESS>:5000/led/set` |
+| `POST /led/off`| Turns all LEDs off. Stops any running effect. | `(none)` | `curl -X POST http://<PI_IP_ADDRESS>:5000/led/off` |
+| `POST /led/breathe/start`| Starts a pulsating "Breathing" effect.<br>**speed** is optional. | `{"r": 0, "g": 0, "b": 255, "speed": 1.0}`| `curl -X POST -H "Content-Type: application/json" -d '{"r":0,"g":0,"b":255, "speed": 2.5}' http://<PI_IP_ADDRESS>:5000/led/breathe/start` |
+| `POST /led/breathe/stop`| Stops the "Breathing" effect. | `(none)` | `curl -X POST http://<PI_IP_ADDRESS>:5000/led/breathe/stop` |
 
-Set LEDs to blue:
-```
-curl -X POST -H "Content-Type: application/json" -d '{"r": 0, "g": 0, "b": 255}' http://<PI_IP_ADDRESS>:5000/led/set
-```
-
-Turn LEDs off:
-```
-curl -X POST http://<PI_IP_ADDRESS>:5000/led/off
-```
 
 ## Resources:
 - https://learn.adafruit.com/neopixels-on-raspberry-pi/python-usage
