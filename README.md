@@ -1,10 +1,10 @@
 # Simple Raspberry Pi LED Web Server
 
-This project contains a simple Rasberry Pi Web server to control WS2812B LEDs via web interface.
+This project contains a simple Rasberry Pi Web server to control neopixel LEDs via web interface. As this is a very simple server script, configurations like number of LEDs or max brightness can directly be changed in the script.
 
 ## Setup Raspberry Pi 4
 - Raspberry Pi 4 Model B
-- Led Strip WS2812B
+- Led Strip WS2812B(`LED_ORDER = neopixel.GRBW`) or SK6812  (`LED_ORDER = neopixel.GRBW`)
 - LED Data pin: GPIO 10 (to run as non-root-user, see [here](https://docs.circuitpython.org/projects/neopixel/en/latest/#setup-for-sudo-less-usage-on-raspberry-pi-boards))
 - Diode 1N4001 on power supply line, used for correct level detection on dataline (see [here](https://learn.adafruit.com/neopixels-on-raspberry-pi/raspberry-pi-wiring#raspberry-pi-wiring-with-diode-3006462))
 
